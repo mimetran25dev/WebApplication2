@@ -1,0 +1,7 @@
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\WebApplication2.exe
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\appsettings.Development.json
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\appsettings.json
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\WebApplication2.dll
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\WebApplication2.deps.json
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\WebApplication2.runtimeconfig.json
+C:\Users\MJ\Downloads\Webapp5\WebApplication2\bin\Release\net8.0\publish\WebApplication2.pdb
