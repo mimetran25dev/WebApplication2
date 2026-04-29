@@ -1,0 +1,286 @@
+﻿@{
+    ViewData["Title"] = "AI Volume Calculator";
+}
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<div class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+ 
+   <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-3xl w-full">
+        <h1 class="text-2xl font-bold mb-2 text-center">
+
+            AI-Powered Volume Calculator
+        </h1>
+
+        <p class="text-center text-gray-600 mb-6">
+            Unique Irregular Solid: <strong>Twisted Prismatoid</strong>
+        </p>
+
+        <hr class="mb-6">
+
+        <h2 class="text-lg font-semibold mb-2">
+            Mathematical Model Used
+        </h2>
+
+        <p class="text-gray-700 mb-6">
+            The system estimates the volume of the twisted prismatoid using the average-area method with a twist adjustment factor. V=[(Ab+At)/2]⋅h⋅(1+t)
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+
+            <div>
+                <label class="block font-medium">
+                    Base Area (cm²)
+                </label>
+                <input id="baseArea"
+                       type="number"
+                       class="w-full border rounded-xl p-2"
+                       placeholder="Enter base area">
+            </div>
+
+            <div>
+                <label class="block font-medium">
+                    Top Area (cm²)
+                </label>
+                <input id="topArea"
+                       type="number"
+                       class="w-full border rounded-xl p-2"
+                       placeholder="Enter top area">
+            </div>
+
+            <div>
+                <label class="block font-medium">
+                    Height (cm)
+                </label>
+                <input id="height"
+                       type="number"
+                       class="w-full border rounded-xl p-2"
+                       placeholder="Enter height">
+            </div>
+
+            <div>
+                <label class="block font-medium">
+                    Twist Factor (0–1)
+                </label>
+                <input id="twist"
+                       type="number"
+                       step="0.1"
+                       min="0"
+                       max="1"
+                       class="w-full border rounded-xl p-2"
+                       placeholder="0 to 1">
+            </div>
+
+        </div>
+
+        <div class="flex gap-3">
+
+            <button onclick="calculateVolume()"
+                    class="bg-blue-600 text-white px-4 py-2 rounded-xl w-full hover:bg-blue-700">
+                Calculate Volume
+            </button>
+
+            <button onclick="resetFields()"
+                    class="bg-gray-500 text-white px-4 py-2 rounded-xl w-full hover:bg-gray-600">
+                Reset
+            </button>
+
+        </div>
+
+        <div id="result"
+             class="mt-6 text-lg font-semibold text-center text-blue-700">
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+function calculateVolume() {
+
+    const base = parseFloat(document.getElementById("baseArea").value);
+    const top = parseFloat(document.getElementById("topArea").value);
+    const height = parseFloat(document.getElementById("height").value);
+    const twist = parseFloat(document.getElementById("twist").value);
+
+    if (
+        isNaN(base) ||
+        isNaN(top) ||
+        isNaN(height) ||
+        isNaN(twist)
+    ) {
+        document.getElementById("result").innerText =
+            "⚠ Please enter all required values.";
+        return;
+    }
+
+    if (twist < 0 || twist > 1) {
+        document.getElementById("result").innerText =
+            "⚠ Twist factor must be between 0 and 1.";
+        return;
+    }
+
+    const averageArea = (base + top) / 2;
+
+    const volume =
+        averageArea *
+        height *
+        (1 + twist);
+
+    document.getElementById("result").innerText =
+        "Estimated Volume: " +
+        volume.toFixed(2) +
+        " cubic centimeters (cm³)";
+}
+
+function resetFields() {
+
+    document.getElementById("baseArea").value = "";
+    document.getElementById("topArea").value = "";
+    document.getElementById("height").value = "";
+    document.getElementById("twist").value = "";
+
+    document.getElementById("result").innerText = "";
+}
+
+</script>
+<hr />
+<!-- Images Section Under Calculator -->
+<div style="margin-top:30px; text-align:center;">
+
+    <h3>Geomectric Illustrations</h3>
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        gap:30px;
+        flex-wrap:wrap;
+        margin-top:15px;
+    ">
+
+        <!-- First Image -->
+        <div style="
+            border:1px solid black;
+            padding:10px;
+            border-radius:10px;
+            background-color:#f9f9f9;
+        ">
+            <img src="~/images/prismatoid.png"
+                 alt="Prismatoid"
+                 style="width:250px; height:auto;" />
+
+            <p><b>Geomectric Shapes</b></p>
+        </div>
+
+        <!-- Second Image -->
+        <div style="
+            border:1px solid black;
+            padding:10px;
+            border-radius:10px;
+            background-color:#f9f9f9;
+        ">
+            <img src="~/images/twistedprismatoid.png"
+                 alt="Twisted Prismatoid"
+                 style="width:250px; height:auto;" />
+
+            <p><b>Twist Example</b></p>
+        </div>
+
+    </div>
+
+</div>
+<div style="
+    border:1px solid black;
+    padding:15px;
+    margin-top:20px;
+    background-color:#f8f8f8;
+    border-radius:8px;
+">
+
+    <h3>C# Implementation</h3>
+
+<pre>
+using System;
+
+class PrismatoidCalculator
+{
+    static void Main()
+    {
+        double baseArea = 10;
+        double middleArea = 12;
+        double topArea = 8;
+        double height = 5;
+
+        double volume;
+
+        volume = (height / 6) * (baseArea + 4 * middleArea + topArea);
+
+        Console.WriteLine("Volume = " + volume);
+    }
+}
+</pre>
+
+</div>
+<div style="margin-top:30px;">
+
+    <h2>Code Snippet Examples</h2>
+
+    <!-- Visual Basic Box -->
+    <div style="
+        border:1px solid black;
+        padding:15px;
+        margin-bottom:20px;
+        background-color:#f8f8f8;
+        border-radius:8px;
+    ">
+        <h3>Visual Basic Implementation</h3>
+
+<pre>
+Module PrismatoidCalculator
+
+    Sub Main()
+
+        Dim baseArea As Double
+        Dim middleArea As Double
+        Dim topArea As Double
+        Dim height As Double
+        Dim volume As Double
+
+        volume = (height / 6) * (baseArea + 4 * middleArea + topArea)
+
+        Console.WriteLine("Volume = " & volume)
+
+    End Sub
+
+End Module
+</pre>
+
+    </div>
+
+    <!-- C++ Box -->
+    <div style="
+        border:1px solid black;
+        padding:15px;
+        background-color:#f8f8f8;
+        border-radius:8px;
+    ">
+        <h3>C++ Implementation</h3>
+
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    double baseArea, middleArea, topArea, height, volume;
+
+    volume = (height / 6) * (baseArea + 4 * middleArea + topArea);
+
+    cout &lt;&lt; "Volume = " &lt;&lt; volume &lt;&lt; endl;
+
+    return 0;
+}
+
+</pre>
+
+</div>
